@@ -64,6 +64,14 @@ namespace prjLAB01_2
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+           
+
+
+
+        }
+
+        private void btnAgregar_Click_1(object sender, EventArgs e)
+        {
             string dni = txtDni.Text;
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
@@ -74,10 +82,7 @@ namespace prjLAB01_2
             string fecha = dptFecNac.Text;
             string departamento = cmbDepartamento.Text;
 
-            dgvUsuario.Rows.Add(codigo,dni,nombre,apellido,direccion,telefono,email,fecnac,departamento);
-
-
-
+            dgvUsuario.Rows.Add(codigo, dni, nombre, apellido, direccion, telefono, email, fecha, departamento);
 
 
         }
