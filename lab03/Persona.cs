@@ -29,7 +29,7 @@ namespace lab03
         {
             if (conn.State==ConnectionState.Open)
             {
-                String sql = "SELECT * FROM tbl_usuario";
+                String sql = "SELECT * FROM Person";
                 SqlCommand cmd = new SqlCommand(sql,conn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -42,6 +42,11 @@ namespace lab03
             {
                 MessageBox.Show("La conexión esta cerrada");
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

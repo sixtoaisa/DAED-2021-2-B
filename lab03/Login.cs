@@ -9,71 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-
-namespace Lab02_01
+namespace lab03
 {
-    public partial class frmLogin : Form
+    public partial class Login : Form
     {
-
         SqlConnection conn;
-
-        public frmLogin()
+        public Login(SqlConnection conn)
         {
+            this.conn = conn;
             InitializeComponent();
-        }
-
-        
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-           
-
-            if (validarUsuario(txtUsuario.Text,txtPassword.Text))
+            if (validarUsuario(txtUsuario.Text, txtPassword.Text))
             {
-                PrincipalMDI principal = new PrincipalMDI();
-                principal.Show();
-                this.Hide();
+                MessageBox.Show("Sesión iniciada correctamente");
             }
             else
             {
                 MessageBox.Show("Usuario o Clave incorrecta");
                 txtUsuario.Focus();
             }
-
-           
         }
 
-        private void conectar()
-        {
-            String bd = "db_lab03";
-            String user = "sa";
-            String pwd = "123456";
-            String servidor = "DESKTOP-FK8R0OS\\LOCAL";
-            String str = "Server=" + servidor + ";DataBase=" + bd + ";User Id=" + user + ";Password=" + pwd + ";";
-
-            conn = new SqlConnection(str);
-            conn.Open();
-        }
-
-        private void desconectar()
-        {
-            if (this.conn.State!=ConnectionState.Closed)
-            {
-                conn.Close();
-            }
-        }
-
-        private Boolean validarUsuario(String usuario,String clave)
-        {
-            conectar();
+        private Boolean validarUsuario(String usuario, String clave)
+        {           
 
             String sql = "SELECT * FROM tbl_usuario WHERE usuario_nombre=@Usuario and usuario_password=@Password ";
-            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlCommand cmd = new SqlCommand(sql, this.conn);
 
             SqlParameter param1 = new SqlParameter();
             param1.ParameterName = "@Usuario";
@@ -93,16 +57,10 @@ namespace Lab02_01
             {
                 retorno = true;
             }
+
             reader.Close();
 
-            desconectar();
-
             return retorno;
-        }
-
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

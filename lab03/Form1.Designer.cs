@@ -42,6 +42,7 @@ namespace lab03
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.btnPersona = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -166,11 +167,22 @@ namespace lab03
             this.btnPersona.UseVisualStyleBackColor = true;
             this.btnPersona.Click += new System.EventHandler(this.btnPersona_Click);
             // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(75, 165);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(80, 23);
+            this.btnLogin.TabIndex = 14;
+            this.btnLogin.Text = "Login";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 196);
+            this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.btnPersona);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnDesconectar);
@@ -206,6 +218,7 @@ namespace lab03
         private System.Windows.Forms.Button btnDesconectar;
         private System.Windows.Forms.MaskedTextBox txtPassword;
         private System.Windows.Forms.Button btnPersona;
+        private System.Windows.Forms.Button btnLogin;
     }
 }
 
