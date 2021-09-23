@@ -42,6 +42,7 @@ namespace lab03
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.MaskedTextBox();
             this.btnPersona = new System.Windows.Forms.Button();
+            this.btnCurso = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -115,7 +116,7 @@ namespace lab03
             this.txtBaseDatos.Name = "txtBaseDatos";
             this.txtBaseDatos.Size = new System.Drawing.Size(155, 20);
             this.txtBaseDatos.TabIndex = 7;
-            this.txtBaseDatos.Text = "db_lab03";
+            this.txtBaseDatos.Text = "School";
             // 
             // btnConectar
             // 
@@ -166,11 +167,22 @@ namespace lab03
             this.btnPersona.UseVisualStyleBackColor = true;
             this.btnPersona.Click += new System.EventHandler(this.btnPersona_Click);
             // 
+            // btnCurso
+            // 
+            this.btnCurso.Location = new System.Drawing.Point(247, 165);
+            this.btnCurso.Name = "btnCurso";
+            this.btnCurso.Size = new System.Drawing.Size(80, 23);
+            this.btnCurso.TabIndex = 14;
+            this.btnCurso.Text = "Cursos";
+            this.btnCurso.UseVisualStyleBackColor = true;
+            this.btnCurso.Click += new System.EventHandler(this.btnCurso_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 196);
+            this.Controls.Add(this.btnCurso);
             this.Controls.Add(this.btnPersona);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.btnDesconectar);
@@ -206,6 +218,7 @@ namespace lab03
         private System.Windows.Forms.Button btnDesconectar;
         private System.Windows.Forms.MaskedTextBox txtPassword;
         private System.Windows.Forms.Button btnPersona;
+        private System.Windows.Forms.Button btnCurso;
     }
 }
 
