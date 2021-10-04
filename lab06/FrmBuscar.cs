@@ -7,15 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
-namespace lab05
+namespace lab06
 {
     public partial class FrmBuscar : Form
     {
-       public string procedimiento { get; set; }
-       public SqlParameter parametro { get; set; }
-       public string valor { get; set; }
+
+        public string campo { get; set; }
+        public string valor { get; set; }
 
         public FrmBuscar()
         {
@@ -24,36 +23,27 @@ namespace lab05
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-           if(this.validar())
+            if (this.validar())
             {
+                this.valor = txtValor.Text;
                 int index = cmbCriterio.SelectedIndex;
-                this.parametro = new SqlParameter();
-                this.parametro.Value = txtValor.Text;
-                this.parametro.SqlDbType = SqlDbType.NVarChar;
-
                 switch (index)
                 {
                     case 0://CODIGO
-                        this.procedimiento = "BuscarPersonaCodigo";
-                        this.parametro.ParameterName = "@PersonID";
-                        this.parametro.SqlDbType = SqlDbType.Int;
+                        this.campo = "PersonID";                       
                         break;
                     case 1://NOMBRE
-                        this.procedimiento = "BuscarPersonaNombre";
-                        this.parametro.ParameterName = "@FirstName";
+                        this.campo = "FirstName";
                         break;
                     case 2://APELLIDO
-                        this.procedimiento = "BuscarPersonaApellido";
-                        this.parametro.ParameterName = "@LastName";
+                        this.campo = "LastName";
                         break;
                 }
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }           
-           
+            }
         }
-
 
         private bool validar()
         {
@@ -78,4 +68,6 @@ namespace lab05
             cmbCriterio.SelectedIndex = 0;
         }
     }
+
 }
+
