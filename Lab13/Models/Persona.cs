@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Lab12.Models
+namespace Lab13.Models
 {
     public class Persona
     {
         public int PersonaID { get; set; }
-        public string Nombre { get; set; }
-        public string Apellido { get; set; }
+        public String Nombre { get; set; }
+        public String Apellido { get; set; }
         public DateTime FechaNac { get; set; }
-        public string Direccion { get; set; }
-        public string Email { get; set; }
+        public String Direccion { get; set; }
+        public String Email { get; set; }
+
+
+
+
+
     }
 }

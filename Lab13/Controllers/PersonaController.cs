@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Linq.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Lab12.Models;
+using Lab13.Models;
 
-namespace Lab12.Controllers
+namespace Lab13.Controllers
 {
     public class PersonaController : Controller
     {
@@ -14,9 +15,9 @@ namespace Lab12.Controllers
         {
             return View();
         }
-        public ActionResult Listar()
-        {
 
+        private List<Persona> llenarPersona()
+        {
             List<Persona> personas = new List<Persona>();
             personas.Add(new Persona
             {
@@ -30,7 +31,7 @@ namespace Lab12.Controllers
 
             personas.Add(new Persona
             {
-                PersonaID = 1,
+                PersonaID = 2,
                 Nombre = "Maria",
                 Apellido = "Salas",
                 Direccion = "Av. Progreso 325",
@@ -48,8 +49,46 @@ namespace Lab12.Controllers
                 Email = "carlos@gmail.com"
             });
 
+            return personas;
+        }
 
+        public ActionResult Listar()
+        {
+
+            List<Persona> personas = llenarPersona();
             return View(personas);
+        }
+
+
+        public ActionResult Mostrar(int id)
+        {
+
+            List<Persona> personas = llenarPersona();
+
+            Persona persona = (from p in personas
+                               where p.PersonaID == id
+                               select p).FirstOrDefault();
+
+
+            return View(persona);
+        }
+
+        public ActionResult Buscar(String criterio)
+        {
+
+            List<Persona> personas = llenarPersona();
+
+            if (criterio == null)
+            {
+                criterio = "";
+            }
+
+            var query = (from p in personas
+                               where p.Nombre == criterio || p.Apellido == criterio
+                         select p);
+
+
+            return View(query.ToList());
         }
     }
 }
