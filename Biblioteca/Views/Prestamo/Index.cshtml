@@ -1,0 +1,65 @@
+﻿
+@model IEnumerable<Biblioteca.Models.Prestamos>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+<p>
+    <!-- HIPERVINCULO (NOMBRE,METODO) -->
+    @Html.ActionLink("Nuevo Prestamo", "Create")
+</p>
+<table class="table thead-dark">
+    <tr>
+        <th>
+            <!-- CABECERA DE LA LISTA -->
+            @Html.DisplayNameFor(model => model.Libro.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Libro.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FecPrestamo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FecDevolucion)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+    <!-- RECORRE CADA ENTIDAD DE LA COLECCION -->
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Libro.Codigo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Libro.Titulo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FecPrestamo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FecDevolucion)
+    </td>
+
+    <td>
+        <!-- HIPERVINCULO (NOMBRE,METODO) -->
+        @Html.ActionLink("Editar", "Edit", new { id = item.IdPrestamo }) |
+        @Html.ActionLink("Borrar", "Delete", new { id = item.IdPrestamo })
+    </td>
+</tr>
+    }
+
+</table>
